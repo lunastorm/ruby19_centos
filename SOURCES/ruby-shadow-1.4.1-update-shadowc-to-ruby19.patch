@@ -1,0 +1,72 @@
+--- shadow-1.4.1/shadow.c.orig	2010-06-01 18:05:24.000000000 -0400
++++ shadow-1.4.1/shadow.c	2010-06-01 18:05:34.000000000 -0400
+@@ -8,11 +8,11 @@
+  * Modified at: <1999/8/19 06:48:18 by ttate>
+  */
+ 
+ #include <shadow.h>
+ #include "ruby.h"
+-#include "rubyio.h"
++#include "ruby/io.h"
+ 
+ static VALUE rb_mShadow;
+ static VALUE rb_mPasswd;
+ static VALUE rb_sPasswdEntry;
+ static VALUE rb_mGroup;
+@@ -45,7 +45,7 @@
+   if( TYPE(str) != T_STRING )
+     rb_raise(rb_eException,"argument must be a string.");
+ 
+-  entry = sgetspent(STR2CSTR(str));
++  entry = sgetspent(StringValuePtr(str));
+ 
+   if( entry == NULL )
+     return Qnil;
+@@ -72,11 +72,11 @@
+   VALUE result;
+ 
+   if( TYPE(file) != T_FILE )
+     rb_raise(rb_eTypeError,"argument must be a File.");
+ 
+-  entry = fgetspent((RFILE(file)->fptr)->f);
++  entry = fgetspent((RFILE(file)->fptr)->stdio_file);
+ 
+   if( entry == NULL )
+     return Qnil;
+ 
+   result = rb_struct_new(rb_sPasswdEntry,
+@@ -127,7 +127,7 @@
+   if( TYPE(name) != T_STRING )
+     rb_raise(rb_eException,"argument must be a string.");
+ 
+-  entry = getspnam(STR2CSTR(name));
++  entry = getspnam(StringValuePtr(name));
+ 
+   if( entry == NULL )
+     return Qnil;
+@@ -155,12 +155,12 @@
+   VALUE val[9];
+   int i;
+   int result;
+ 
+   for(i=0; i<=8; i++)
+-    val[i] = RSTRUCT(entry)->ptr[i];
+-  cfile = RFILE(file)->fptr->f;
++    val[i] = RSTRUCT(entry)->as.heap.ptr[i];
++  cfile = RFILE(file)->fptr->stdio_file;
+ 
+   centry.sp_namp = STR2CSTR(val[0]);
+   centry.sp_pwdp = STR2CSTR(val[1]);
+   centry.sp_lstchg = FIX2INT(val[2]);
+   centry.sp_min = FIX2INT(val[3]);
+@@ -160,8 +160,8 @@
+     val[i] = RSTRUCT(entry)->as.heap.ptr[i];
+   cfile = RFILE(file)->fptr->stdio_file;
+ 
+-  centry.sp_namp = STR2CSTR(val[0]);
+-  centry.sp_pwdp = STR2CSTR(val[1]);
++  centry.sp_namp = StringValuePtr(val[0]);
++  centry.sp_pwdp = StringValuePtr(val[1]);
+   centry.sp_lstchg = FIX2INT(val[2]);
+   centry.sp_min = FIX2INT(val[3]);
+   centry.sp_max = FIX2INT(val[4]);
