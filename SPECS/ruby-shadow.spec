@@ -1,10 +1,9 @@
 %{!?ruby_sitearch: %define ruby_sitearch %(ruby -rrbconfig -e "puts Config::CONFIG['sitearchdir']")}
 # This fails in mock since ruby doesn't exist in the default build env.
-#%{!?ruby_abi: %define ruby_abi %(ruby -rrbconfig -e "puts Config::CONFIG['ruby_version']")}
 
 Name:           ruby-shadow
 Version:        1.4.1
-Release:        7%{?dist}
+Release:        7.el5
 Summary:        Ruby bindings for shadow password access
 Group:          System Environment/Libraries
 License:        Public Domain
@@ -14,7 +13,6 @@ Patch0:         ruby-shadow-1.4.1-cflags.patch
 Patch1:         ruby-shadow-1.4.1-struct.patch
 Patch2:         ruby-shadow-1.4.1-depend.patch
 Patch3:         ruby-shadow-1.4.1-update-shadowc-to-ruby19.patch
-Patch4:         ruby-shadow-1.4.1-update-shadowc-to-ruby19-2.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  ruby ruby-devel
 BuildRequires:  ruby(abi) = 1.9
@@ -30,7 +28,6 @@ Ruby bindings for shadow password access
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %{_bindir}/iconv -f EUCJP -t utf8 -o README.ja README.euc
 
 %build
