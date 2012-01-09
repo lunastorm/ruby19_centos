@@ -1,1 +1,10 @@
-This project contains Ruby written package RPMs that are built against Ruby 1.9 and CentOS
+This project contains Ruby written package RPM specs that can be built against Ruby 1.9 and CentOS
+
+### How to build
+
+1. Install gcc-c++
+2. Install rpm-build
+3. Get imeyer/ruby-1.9.2-rpm , build Ruby 1.9 RPM and install it
+4. cp SPECS/* and SOURCES/* to /usr/src/redhat/SPECS and /usr/src/redhat/SOURCES respectively
+5. rpmbuild -bb SPEC/*.spec to build the RPMs
+
