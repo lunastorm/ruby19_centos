@@ -3,7 +3,7 @@
 
 Name:           ruby-augeas
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        1.el5
 Summary:        Ruby bindings for Augeas
 Group:          Development/Languages
 
@@ -13,7 +13,6 @@ Source0:        http://augeas.net/download/ruby/ruby-augeas-%{version}.tgz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-#BuildRequires:  ruby ruby-devel rubygem(rake)
 BuildRequires:  ruby
 BuildRequires:  augeas-devel >= 0.8.0
 BuildRequires:  pkgconfig
