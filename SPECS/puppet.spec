@@ -5,7 +5,7 @@
 %global confdir conf/redhat
 
 Name:           puppet
-Version:        2.7.6
+Version:        2.7.20
 Release:        1%{?dist}
 Summary:        A network tool for managing many disparate systems
 License:        ASL 2.0
@@ -71,7 +71,6 @@ done
 for f in external/nagios.rb network/http/mongrel.rb relationship.rb; do
   sed -i -e '1d' lib/puppet/$f
 done
-chmod +x ext/puppetstoredconfigclean.rb
 
 find examples/ -type f -empty | xargs rm
 find examples/ -type f | xargs chmod a-x
@@ -192,6 +191,11 @@ echo "D /var/run/%{name} 0755 %{name} %{name} -" > \
 %{_mandir}/man8/puppet-resource_type.8.gz
 %{_mandir}/man8/puppet-secret_agent.8.gz
 %{_mandir}/man8/puppet-status.8.gz
+%{_mandir}/man8/puppet-ca.8.gz
+%{_mandir}/man8/puppet-instrumentation_data.8.gz
+%{_mandir}/man8/puppet-instrumentation_listener.8.gz
+%{_mandir}/man8/puppet-instrumentation_probe.8.gz
+%{_mandir}/man8/puppet-module.8.gz
 
 %files server
 %defattr(-, root, root, 0755)

@@ -8,8 +8,11 @@ ruby-shadow: |ruby19
 ruby-augeas: |ruby19
 	cd ~/rpmbuild ; rpmbuild -bb --define "dist $(dist)" SPECS/ruby-augeas.spec
 
-puppet: |ruby19 facter
+puppet: ~/rpmbuild/SOURCES/puppet-2.7.20.tar.gz |ruby19 facter
 	cd ~/rpmbuild ; rpmbuild -bb --define "dist $(dist)" SPECS/puppet.spec
+
+~/rpmbuild/SOURCES/puppet-2.7.20.tar.gz: |~/rpmbuild
+	cd ~/rpmbuild/SOURCES ; wget http://downloads.puppetlabs.com/puppet/puppet-2.7.20.tar.gz
 
 ruby-bundler: |ruby19
 	cd ~/rpmbuild ; rpmbuild -bb --define "dist $(dist)" SPECS/ruby-bundler.spec
