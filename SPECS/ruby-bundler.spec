@@ -2,7 +2,7 @@
 
 Name:       ruby-%{oname}
 Version:    1.0.21
-Release:    1.el5
+Release:    1%{?dist}
 Summary:    The best way to manage your application's dependencies
 Group:      Development/Ruby
 License:    MIT

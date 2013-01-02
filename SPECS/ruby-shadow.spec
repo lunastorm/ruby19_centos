@@ -3,7 +3,7 @@
 
 Name:           ruby-shadow
 Version:        1.4.1
-Release:        7.el5
+Release:        7%{?dist}
 Summary:        Ruby bindings for shadow password access
 Group:          System Environment/Libraries
 License:        Public Domain

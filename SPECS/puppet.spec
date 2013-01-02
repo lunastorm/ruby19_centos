@@ -6,7 +6,7 @@
 
 Name:           puppet
 Version:        2.7.6
-Release:        1.el5
+Release:        1%{?dist}
 Summary:        A network tool for managing many disparate systems
 License:        ASL 2.0
 URL:            http://puppetlabs.com

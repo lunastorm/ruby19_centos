@@ -3,7 +3,7 @@
 
 Name:           ruby-augeas
 Version:        0.4.1
-Release:        1.el5
+Release:        1%{?dist}
 Summary:        Ruby bindings for Augeas
 Group:          Development/Languages
 
