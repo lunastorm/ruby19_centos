@@ -2,9 +2,7 @@ This project contains Ruby written package RPM specs that can be built against R
 
 ### How to build
 
-1. Install gcc-c++
-2. Install rpm-build
-3. Get imeyer/ruby-1.9.2-rpm , build Ruby 1.9 RPM and install it
-4. cp SPECS/* and SOURCES/* to /usr/src/redhat/SPECS and /usr/src/redhat/SOURCES respectively
-5. rpmbuild -bb SPEC/*.spec to build the RPMs
+# yum install -y rpm-build rpmdevtools readline-devel ncurses-devel gdbm-devel tcl-devel openssl-devel db4-devel byacc gcc-c++ augeas-devel
+# make
+# The output RPMs will be put at ~/rpmbuild/RPMS
 
