@@ -22,7 +22,7 @@ across many machines, systematically and repeatably
 
 %install
 rm -rf %{buildroot}
-/bin/sh -c "GEM_HOME=%{buildroot}/usr/lib64/ruby/gems/1.9.1/ gem install bundler"
+/bin/sh -c "GEM_HOME=%{buildroot}/usr/lib64/ruby/gems/1.9.1/ gem install bundler --version 1.0.21"
 
 %files
 
